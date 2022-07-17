@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>email</th>
+      <th>Phone</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let lecture of lectures">
+      <td>{{ lecture.first_name }}</td>
+      <td>{{ lecture.last_name }}</td>
+      <td>{{ lecture.phone }}</td>
+      <td>{{ lecture.email }}</td>
+      <td>
+        <img
+          [src]="imagePath(lecture.image)"
+          [alt]="lecture.first_name"
+          width="50"
+          height="50"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
