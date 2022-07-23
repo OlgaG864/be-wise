@@ -11,7 +11,7 @@ const pool = mysql.createPool({
 });
 
 module.exports = {
-  getAllLectures: function (req, res) {
+  getAllLectures: function (req, res, next) {
     pool.getConnection(function (err, connection) {
       if (err) throw err; //not connected
 
