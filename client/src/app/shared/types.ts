@@ -1,9 +1,9 @@
-export interface Lecture {
+export interface Lecturer {
   id: number;
   first_name: string;
   last_name: string;
   phone: string;
-  email: string;
-  date: Date;
+  email: number;
+  date(): Date;
   image: string;
 }

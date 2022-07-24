@@ -6,8 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./profile-card.component.scss'],
 })
 export class ProfileCardComponent implements OnInit {
-  
-  @Input() item = 'string';
+  @Input() lecture = 'Someone';
   constructor() {}
 
   ngOnInit(): void {}

@@ -1,27 +1,24 @@
-const mysql = require("mysql2");
-
-const pool = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "courses",
-  waitForConnections: true,
-  connectionLimit: 5,
-  queueLimit: 0,
-});
+const database = require("./database");
 
 module.exports = {
-  getAllLectures: function (req, res, next) {
-    pool.getConnection(function (err, connection) {
-      if (err) throw err; //not connected
+  getAllLectures: async function (req, res, next) {
+    const param = req.query;
 
-      const sql = "SELECT * FROM lectures";
+    const fieldsMap = new Map([
+      ["name", "lectures.first_name"],
+      ["last_name", "lectures.last_name"],
+      ["email", "lectures.email"],
+    ]);
 
-      connection.query(sql, function (sqlErr, result, fields) {
-        if (sqlErr) throw sqlErr;
+    const sql = "SELECT * FROM lectures";
 
-        res.send(result);
-      });
-    });
+    try {
+      const result = await database.query(sql);
+      res.set("Access-Control-Allow-Origin", "*");
+      res.json(result[0]);
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
   },
 };

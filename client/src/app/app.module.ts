@@ -1,26 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { LecturersModule } from './lecturers/lecturers.module';
+import { SharedModule } from './shared/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LecturesComponent } from './lectures/lectures.component';
-import { ProfileCardComponent } from './profile-card/profile-card.component';
-import { HeaderComponent } from './header/header.component';
+import { CoreModule } from './core/core.module';
+import { HttpClientModule } from '@angular/common/http';
 import { CursesComponent } from './curses/curses.component';
-import { SignupComponent } from './signup/signup.component';
-import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LecturesComponent,
-    ProfileCardComponent,
-    CursesComponent,
-    SignupComponent,
-    LoginComponent,
-    HeaderComponent,
+  declarations: [AppComponent, CursesComponent],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    LecturersModule,
+    SharedModule,
+    CoreModule,
   ],
-  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
