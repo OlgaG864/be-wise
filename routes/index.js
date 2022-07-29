@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const lecture = require("../controller/lectures");
+const curse = require("../controller/curses");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -9,6 +10,10 @@ router.get("/", function (req, res, next) {
 
 router.get("/lectures", function (req, res, next) {
   lecture.getAllLectures(req, res);
+});
+
+router.get("/curses", function (req, res, next) {
+  curse.getAllCurses(req, res);
 });
 //router.get("/lectures", lecture.allLectures);
 

@@ -7,3 +7,14 @@ export interface Lecturer {
   date(): Date;
   image: string;
 }
+
+export interface Curse {
+  id: number;
+  curse_code: number;
+  name: string;
+  description: string;
+  price: number;
+  date(): Date;
+  lessons: number;
+  lecture_name: string;
+}
