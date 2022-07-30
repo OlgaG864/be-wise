@@ -1,8 +1,23 @@
-<div class="p-2">
-  <button type="button" class="btn btn-primary" (click)="exportCursesData()">
-    Export Data
-  </button>
+<br />
+<br />
+<div class="input-group rounded">
+  <input
+    (keydown)="findCurse($event)"
+    type="search"
+    class="form-control rounded"
+    placeholder="Search for curse category"
+    aria-label="Search"
+    aria-describedby="search-addon"
+  />
+  <span class="input-group-text border-0" id="search-addon">
+    <i class="fas fa-search"></i>
+  </span>
 </div>
+<br />
+
+<button type="button" class="btn btn-primary" (click)="exportCursesData()">
+  Export Data
+</button>
 
 <div *ngFor="let curse of curses">
   <div class="accordion" id="accordionExample">

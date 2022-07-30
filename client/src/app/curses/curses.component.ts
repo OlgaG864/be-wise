@@ -58,4 +58,17 @@ export class CursesComponent implements OnInit {
     }
     return 'bi-chevron-expand';
   }
+
+  findCurse(event: KeyboardEvent) {
+    const value = this.searchFieldValue;
+
+    if (event.key === 'Enter' && value.length >= 3) {
+      this.apiService.findCurse(value).subscribe({
+        next: (data: Array<Curse>) => {
+          this.curses = data;
+        },
+        error: (err) => console.error(err),
+      });
+    }
+  }
 }

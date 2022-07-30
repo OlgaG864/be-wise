@@ -22,4 +22,25 @@ module.exports = {
     res.set("Access-Control-Allow-Origin", "*");
     fileMgmt.exportToFile(res, sql, "curses");
   },
+
+  findCurse: async function (req, res, next) {
+    const param = req.query;
+
+    const searchQuery = `%${value.search}%`;
+
+    const sql = `SELECT * FROM curses ORDER BY name ASC;`;
+
+    try {
+      const result = await database.query(sql, [
+        searchQuery,
+        searchQuery,
+        searchQuery,
+      ]);
+
+      res.json(result[0]);
+    } catch (err) {
+      res.status(400).send(`search error: ${err}`);
+      throw error;
+    }
+  },
 };
