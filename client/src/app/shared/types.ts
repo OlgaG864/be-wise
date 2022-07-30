@@ -12,9 +12,10 @@ export interface Curse {
   id: number;
   curse_code: number;
   name: string;
+  category: string;
   description: string;
   price: number;
-  date(): Date;
+  date: Date;
   lessons: number;
   lecture_name: string;
 }

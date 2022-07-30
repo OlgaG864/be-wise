@@ -6,8 +6,18 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./profile-card.component.scss'],
 })
 export class ProfileCardComponent implements OnInit {
-  @Input() lecture = '';
+  @Input() lecture = {
+    first_name: '',
+    last_name: '',
+    phone: '',
+    email: '',
+    date: '',
+    image: '',
+  };
   constructor() {}
 
   ngOnInit(): void {}
+  imagePath(image: string | null): string {
+    return !image ? '' : `../../assets/images/${image}`;
+  }
 }

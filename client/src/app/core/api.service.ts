@@ -19,4 +19,15 @@ export class ApiService {
   exportCurses(): Observable<FilePath> {
     return this.http.get<FilePath>(`${environment.serverUrl}/export`);
   }
+
+  getSortedCurses(column: string, direction: string): Observable<Array<Curse>> {
+    return this.http.get<Array<Curse>>(
+      `${environment.serverUrl}/curses?column=${column}&sort=${direction}`
+    );
+  }
+  findCurse(searchTerm: string): Observable<Array<Curse>> {
+    return this.http.get<Array<Curse>>(
+      `${environment.serverUrl}/curses/find?search=${searchTerm}`
+    );
+  }
 }
