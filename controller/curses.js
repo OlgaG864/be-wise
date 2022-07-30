@@ -5,7 +5,7 @@ module.exports = {
   getAllCurses: async function (req, res, next) {
     const param = req.query;
 
-    const sql = "SELECT * FROM curses";
+    const sql = "SELECT *FROM curses ORDER BY price ASC";
 
     try {
       const result = await database.query(sql);
