@@ -1,3 +1,9 @@
+<div class="p-2">
+  <button type="button" class="btn btn-primary" (click)="exportCursesData()">
+    Export Data
+  </button>
+</div>
+
 <div *ngFor="let curse of curses">
   <div class="accordion" id="accordionExample">
     <div class="accordion-item">
@@ -10,11 +16,24 @@
           aria-expanded="true"
           aria-controls="collapseOne"
         >
-          Curse Name:{{ curse.name }}
-          <br />
-          Curse price:{{ curse.price }}
+          <table>
+            <tr>
+              <th>Curse Name:</th>
+              <th>Price:</th>
+            </tr>
+            <tr>
+              <td>
+                <span>Curse code: </span>{{ curse.curse_code }}<br />
+                {{ curse.name }}
+              </td>
+              <td>
+                {{ curse.price }}
+              </td>
+            </tr>
+          </table>
         </button>
       </h2>
+
       <div
         id="collapseOne"
         class="accordion-collapse collapse show"
@@ -22,7 +41,6 @@
         data-bs-parent="#accordionExample"
       >
         <div class="accordion-body">
-          <span>Curse code: </span>{{ curse.curse_code }}<br />
           <span>Curse starting date: </span>{{ curse.date }}<br />
           <span>Curse description: </span>{{ curse.description }}<br />
           <span>Curse lecture name: </span> {{ curse.lecture_name }}<br />

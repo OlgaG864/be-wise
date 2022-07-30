@@ -1,4 +1,5 @@
 const database = require("./database");
+const fileMgmt = require("../shared/fileMgmt");
 
 module.exports = {
   getAllCurses: async function (req, res, next) {
@@ -14,5 +15,11 @@ module.exports = {
       console.log(err);
       res.json(err);
     }
+  },
+
+  exportCurses: function (req, res, next) {
+    const sql = "SELECT * FROM curses";
+    res.set("Access-Control-Allow-Origin", "*");
+    fileMgmt.exportToFile(res, sql, "curses");
   },
 };

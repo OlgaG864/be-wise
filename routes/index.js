@@ -15,6 +15,7 @@ router.get("/lectures", function (req, res, next) {
 router.get("/curses", function (req, res, next) {
   curse.getAllCurses(req, res);
 });
+router.get("/export", curse.exportCurses);
 //router.get("/lectures", lecture.allLectures);
 
 module.exports = router;

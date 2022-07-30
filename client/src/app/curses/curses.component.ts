@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Curse } from '../shared/types';
+import { Curse, sortColumn, FilePath } from '../shared/types';
+import { environment } from 'src/enviroment/enviroment';
 import { ApiService } from '../core/api.service';
 
 @Component({
@@ -18,6 +19,15 @@ export class CursesComponent implements OnInit {
       },
       error: (err) => console.error(err),
       complete: () => console.log('complete'),
+    });
+  }
+
+  exportCursesData() {
+    this.apiService.exportCurses().subscribe({
+      next: (data: FilePath) => {
+        window.open(`${environment.serverUrl}/export`);
+      },
+      error: (err) => console.error(err),
     });
   }
 }

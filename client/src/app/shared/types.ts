@@ -18,3 +18,14 @@ export interface Curse {
   lessons: number;
   lecture_name: string;
 }
+
+export interface FilePath {
+  name: string;
+}
+
+export type sortColumn = 'name' | 'price';
+
+export interface CurseSort {
+  column: sortColumn;
+  dirAsc: boolean;
+}
