@@ -13,6 +13,7 @@ export class CursesComponent implements OnInit {
   tableSort!: CurseSort;
   searchFieldValue!: string;
   searchTerm!: string;
+
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {

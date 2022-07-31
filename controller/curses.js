@@ -28,15 +28,11 @@ module.exports = {
 
     const searchQuery = `%${value.search}%`;
 
-    const sql = `SELECT * FROM curses ORDER BY name ASC;`;
+    const sql = `SELECT * FROM curses WHERE category LIKE ? ORDER BY name ASC;`;
 
     try {
-      const result = await database.query(sql, [
-        searchQuery,
-        searchQuery,
-        searchQuery,
-      ]);
-
+      const result = await database.query(sql, [searchQuery]);
+      res.set("Access-Control-Allow-Origin", "*");
       res.json(result[0]);
     } catch (err) {
       res.status(400).send(`search error: ${err}`);

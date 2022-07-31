@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CursesComponent } from './curses/curses.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, CursesComponent],
@@ -18,6 +19,7 @@ import { CursesComponent } from './curses/curses.component';
     LecturersModule,
     SharedModule,
     CoreModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

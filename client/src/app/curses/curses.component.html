@@ -1,65 +1,69 @@
 <br />
 <br />
-<div class="input-group rounded">
+<div>
   <input
     (keydown)="findCurse($event)"
-    type="search"
-    class="form-control rounded"
-    placeholder="Search for curse category"
-    aria-label="Search"
-    aria-describedby="search-addon"
+    [(ngModel)]="searchFieldValue"
+    type="text"
+    placeholder="Search by category"
+    class="form-control"
   />
-  <span class="input-group-text border-0" id="search-addon">
-    <i class="fas fa-search"></i>
-  </span>
 </div>
+<button>X</button>
 <br />
 
 <button type="button" class="btn btn-primary" (click)="exportCursesData()">
   Export Data
 </button>
 
-<div *ngFor="let curse of curses">
-  <div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        Curse Name and Curse price
+        <!-- <button (click)="sortCustomers('name')" class="btn btn-default">
+                  <i [ngClass]="displaySort('name')"></i>
+              </button> -->
+      </th>
+      <th>
+        Description
+        <!-- <button (click)="sortCustomers('email')" class="btn btn-default">
+                  <i [ngClass]="displaySort('email')"></i>
+              </button> -->
+      </th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+<div>
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div *ngFor="let curse of curses" class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne">
         <button
-          class="accordion-button"
+          class="accordion-button collapsed"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#collapseOne"
-          aria-expanded="true"
-          aria-controls="collapseOne"
+          data-bs-target="#flush-collapseOne"
+          aria-expanded="false"
+          aria-controls="flush-collapseOne"
         >
-          <table>
-            <tr>
-              <th>Curse Name:</th>
-              <th>Price:</th>
-            </tr>
-            <tr>
-              <td>
-                {{ curse.curse_code }}
-                {{ curse.name }}
-              </td>
-              <td>
-                {{ curse.price }}
-              </td>
-            </tr>
-          </table>
+          {{ curse.curse_code }}
+          <br />
+          {{ curse.name }}<br />
+          {{ curse.price }}
         </button>
       </h2>
-
       <div
-        id="collapseOne"
-        class="accordion-collapse collapse show"
-        aria-labelledby="headingOne"
-        data-bs-parent="#accordionExample"
+        id="flush-collapseOne"
+        class="accordion-collapse collapse"
+        aria-labelledby="flush-headingOne"
+        data-bs-parent="#accordionFlushExample"
       >
         <div class="accordion-body">
-          <span>Curse starting date: </span>{{ curse.date }}<br />
-          <span>Curse description: </span>{{ curse.description }}<br />
-          <span>Curse lecture name: </span> {{ curse.lecture_name }}<br />
-          <span>Curse number of lessons: </span> {{ curse.lessons }}<br />
+          {{ curse.category }}
+          {{ curse.description }}
+          {{ curse.lecture_name }}
+          {{ curse.lessons }}
         </div>
       </div>
     </div>
