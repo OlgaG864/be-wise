@@ -17,6 +17,6 @@ router.get("/curses", function (req, res, next) {
 });
 router.get("/export", curse.exportCurses);
 //router.get("/lectures", lecture.allLectures);
-router.get("/find", curse.findCurse);
+router.get("/curses/find", curse.findCurse);
 
 module.exports = router;

@@ -13,10 +13,19 @@ export class CursesComponent implements OnInit {
   tableSort!: CurseSort;
   searchFieldValue!: string;
   searchTerm!: string;
+  isShown: boolean = false;
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
+    this.getCurses();
+    this.tableSort = {
+      column: 'name',
+      dirAsc: true,
+    };
+  }
+
+  getCurses() {
     this.apiService.getCursesData().subscribe({
       next: (data: Array<Curse>) => {
         this.curses = data;
@@ -25,7 +34,9 @@ export class CursesComponent implements OnInit {
       complete: () => console.log('complete'),
     });
   }
-
+  toggleShow() {
+    this.isShown = !this.isShown;
+  }
   exportCursesData() {
     this.apiService.exportCurses().subscribe({
       next: (data: FilePath) => {
@@ -71,5 +82,10 @@ export class CursesComponent implements OnInit {
         error: (err) => console.error(err),
       });
     }
+  }
+
+  clearSearch() {
+    this.searchFieldValue = '';
+    this.getCurses();
   }
 }

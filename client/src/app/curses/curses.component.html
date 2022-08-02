@@ -1,71 +1,66 @@
 <br />
+<h1>Curses</h1>
 <br />
-<div>
-  <input
-    (keydown)="findCurse($event)"
-    [(ngModel)]="searchFieldValue"
-    type="text"
-    placeholder="Search by category"
-    class="form-control"
-  />
+
+<div id="container">
+  <div class="div">
+    <input
+      (keydown)="findCurse($event)"
+      [(ngModel)]="searchFieldValue"
+      type="text"
+      placeholder="Search by category"
+      class="form-control"
+    />
+  </div>
+
+  <button (click)="clearSearch()" type="button">X</button>
+  <br />
+
+  <button type="button" class="btn btn-primary" (click)="exportCursesData()">
+    Export Data
+  </button>
 </div>
-<button>X</button>
-<br />
-
-<button type="button" class="btn btn-primary" (click)="exportCursesData()">
-  Export Data
-</button>
-
 <table class="table">
   <thead>
     <tr>
       <th>
-        Curse Name and Curse price
-        <!-- <button (click)="sortCustomers('name')" class="btn btn-default">
-                  <i [ngClass]="displaySort('name')"></i>
-              </button> -->
+        Curse Name
+        <button (click)="sortCurses('name')" class="btn btn-default">
+          <i [ngClass]="displaySort('name')"></i>
+        </button>
       </th>
       <th>
-        Description
-        <!-- <button (click)="sortCustomers('email')" class="btn btn-default">
-                  <i [ngClass]="displaySort('email')"></i>
-              </button> -->
+        Curse Price
+        <button (click)="sortCurses('price')" class="btn btn-default">
+          <i [ngClass]="displaySort('price')"></i>
+        </button>
       </th>
+      <th></th>
     </tr>
   </thead>
-  <tbody></tbody>
-</table>
-<div>
-  <div class="accordion accordion-flush" id="accordionFlushExample">
-    <div *ngFor="let curse of curses" class="accordion-item">
-      <h2 class="accordion-header" id="flush-headingOne">
-        <button
-          class="accordion-button collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#flush-collapseOne"
-          aria-expanded="false"
-          aria-controls="flush-collapseOne"
-        >
+  <tbody>
+    <tr *ngFor="let curse of curses">
+      <td class="d-flex flex-row">
+        <div class="me-3">
           {{ curse.curse_code }}
-          <br />
-          {{ curse.name }}<br />
-          {{ curse.price }}
-        </button>
-      </h2>
-      <div
-        id="flush-collapseOne"
-        class="accordion-collapse collapse"
-        aria-labelledby="flush-headingOne"
-        data-bs-parent="#accordionFlushExample"
-      >
-        <div class="accordion-body">
-          {{ curse.category }}
-          {{ curse.description }}
+        </div>
+        <div>
+          <div class="fw-bold">{{ curse.name }}</div>
+          <span class="fw-light">{{ curse.price }}</span>
+        </div>
+        <div>
+          <button (click)="toggleShow()">
+            <i class="bi bi-node-plus"></i>
+          </button>
+        </div>
+
+        <div *ngIf="isShown" class="row container-fluid" id="divshow">
+          <td>{{ curse.category }}</td>
+          <td>{{ curse.description }}</td>
           {{ curse.lecture_name }}
           {{ curse.lessons }}
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
